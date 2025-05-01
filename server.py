@@ -8,7 +8,8 @@ clients = []
 def handle_client(socket):
     while True:
         data = socket.recv(1024)
-        socket.sendall(data)
+        for client in clients:
+            client.sendall(data)
 
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:

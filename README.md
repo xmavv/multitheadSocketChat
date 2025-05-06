@@ -49,3 +49,11 @@ print(data)
 wowczas client nie dostawal wiadomosci od serwera przed tym jak jej nie wyslal (synchroniczne dzialanie), co nie jest naszym chcianym rozwiazaniem, my chcemy aby client mogl otrzymac wiadomosc (w mniemaniu od innego clienta) nie patrzac na to czy wczesniej wyslal jakis komunikat
 
 ## Sekcje krytyczne i ich rozwiązanie
+### w przypadku serwera: 
+
+- sekcja krytyczna moze wystapic w przypadku jednoczesnego wpisywania nowego socketu do listy `clients` oraz wysylania wiadomosci do wszystkich socketow z listy `clients`
+
+w tym celu stworzono mutex `clients_mutex`, ktory blokuje dostep do tej zmiennej przy dodawaniu nowego socketa oraz przy wysylaniu wiadomosci
+
+### w przypadku clienta:
+- wychodzi na to ze socket ma dwa osobne buffery dla wysylania i odbierania, wiec nie ma tutaj mowy o sekcji krytycznej

@@ -24,8 +24,6 @@ w sciezce projektu
 ```python client.py```
 add as many clients as u wish...
 
-gdzie argument to ilosc filozofow
-
 
 ## Czym są wątki i co reprezentują
 ### w przypadku serwera: 
